@@ -13,3 +13,10 @@ spring:
 
     hibernate:
       ddl-auto: create
+
+oauth:
+  kakao:
+    client_id: 44f2490daa92e50822ad519ef4b33451
+    redirect_uri: http://localhost:3000/oauth/redirected/kakao
+    client_secret: LdEFfOMgUKZnLoCT3VSBSw5b3coO17Qp
+    scope: profile_nickname, profile_image
