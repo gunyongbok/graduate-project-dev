@@ -1,5 +1,5 @@
 # Ignore private properties
-src/main/resources/application.yml
+git rm --cached src/main/resources/application.yml
 
 .gradle
 build/
