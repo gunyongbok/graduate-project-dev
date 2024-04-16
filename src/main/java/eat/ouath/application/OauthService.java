@@ -6,7 +6,11 @@ import eat.ouath.OauthServerType;
 import eat.ouath.domain.authcode.AuthCodeRequestUrlProviderComposite;
 import eat.ouath.domain.client.OauthMemberClientComposite;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +32,16 @@ public class OauthService {
         return saved.id();
     }
 
+    public OauthMember save(OauthMember member) {
+        return oauthMemberRepository.save(member);
+    }
 
+    public List<OauthMember> findAll() {
+        return oauthMemberRepository.findAll();
+    }
+
+
+    public Optional<OauthMember> findById(Long id) {
+        return oauthMemberRepository.findById(id);
+    }
 }

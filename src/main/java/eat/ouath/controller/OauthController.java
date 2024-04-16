@@ -1,5 +1,7 @@
 package eat.ouath.controller;
 
+import eat.ouath.OauthMember;
+import eat.ouath.OauthMemberRepository;
 import eat.ouath.OauthServerType;
 import eat.ouath.application.OauthService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -7,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RequestMapping("/oauth")
@@ -35,5 +39,20 @@ public class OauthController {
         return ResponseEntity.ok(login);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<OauthMember> saveMember(@RequestBody OauthMember member) {
+        OauthMember savedMember = oauthService.save(member);
+        return ResponseEntity.ok(savedMember);
+    }
+
+    @GetMapping("/members")
+    public ResponseEntity<?> findAll() {
+        return ResponseEntity.ok(oauthService.findAll());
+    }
+
+    @GetMapping("/members/{id}")
+    public ResponseEntity<Optional<OauthMember>> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(oauthService.findById(id));
+    }
 }
 

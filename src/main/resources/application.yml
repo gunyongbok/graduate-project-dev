@@ -2,7 +2,15 @@ logging:
   level:
     org.hibernate.orm.jdbc.bind: TRACE
 
+
 spring:
+  datasource:
+    ## 설정
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/GN-study/studyDB
+    username: sa
+    password:
+
   jpa:
     show-sql: true
     properties:
@@ -12,7 +20,12 @@ spring:
         highlight_sql: true
 
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+
+
 
 oauth:
   kakao:
